@@ -7,11 +7,11 @@ const orderRouter = express.Router()
 
 // for admin
 orderRouter.post('/list', adminAuth, allOrder)
-orderRouter.post('status', adminAuth, updateStatus)
+orderRouter.post('/status', adminAuth, updateStatus)
 
 // for payment
 orderRouter.post('/place', authUser, placeOrder)
-orderRouter.post('stripe', authUser, placeOrderStripe)
+orderRouter.post('/stripe', authUser, placeOrderStripe)
 
 // verify payment
 orderRouter.post('/verify', authUser, verifyStripe)

@@ -44,14 +44,18 @@ const PlaceOrder = () => {
                     }
                 }
             }
+            // console.log(orderItems);
+            
             let orderData = {
                 address:formData,
                 items:orderItems,
-                amount:getCartAmount()+delivery_charges
+                amount:getCartAmount() + delivery_charges
             }
-            switch(method){
-                case 'cod':
-                const response = await axios.post(backendUrl+'/api/order/place',orderData,{headers:{token}})
+            switch (method){
+                case 'cod': {
+                const response = await axios.post(backendUrl + '/api/order/place',orderData,{headers: {token}})
+                console.log(response);
+                
                 if(response.data.success){
                     setCartItems({})
                     navigate('/orders')
@@ -59,8 +63,11 @@ const PlaceOrder = () => {
                     toast.error(response.data.message)
                 }
                 break;
-                case 'stripe':
+                }
+                case 'stripe': {
                     const responseStripe = await axios.post(backendUrl+'/api/order/stripe',orderData,{headers:{token}})
+                    console.log(responseStripe);
+                    
                     if(responseStripe.data.success){
                         const {session_url}=responseStripe.data
                         window.location.replace(session_url)
@@ -68,6 +75,7 @@ const PlaceOrder = () => {
                         toast.error(responseStripe.data.message)
                     }
                 break;
+                }
 
               default:
                 break;
@@ -88,8 +96,8 @@ const PlaceOrder = () => {
                     <div className="flex flex-1 flex-col gap-3 text-[95%]">
                         <Title title={'Delivery'} title2={'Information'} />
                         <div className="flex gap-3">
-                            <input onChange={onChangeHandler} value={formData.firstName} type="text" name='firstname' placeholder='First Name' className='ring-1 ring-sky-900/15 p-1 pl-3 rounded-sm bg-white outline-none w-1/2' required />
-                            <input onChange={onChangeHandler} value={formData.lastName} type="text" name='lastname' placeholder='Last Name' className='ring-1 ring-sky-900/15 p-1 pl-3 rounded-sm bg-white outline-none w-1/2' required/>
+                            <input onChange={onChangeHandler} value={formData.firstName} type="text" name='firstName' placeholder='First Name' className='ring-1 ring-sky-900/15 p-1 pl-3 rounded-sm bg-white outline-none w-1/2' required />
+                            <input onChange={onChangeHandler} value={formData.lastName} type="text" name='lastName' placeholder='Last Name' className='ring-1 ring-sky-900/15 p-1 pl-3 rounded-sm bg-white outline-none w-1/2' required/>
                         </div>
                         <input onChange={onChangeHandler} value={formData.email} type="email" name='email' placeholder='Your Email Address' className='ring-1 ring-sky-900/15 p-1 pl-3 rounded-sm bg-white outline-none ' required/>
                         <input onChange={onChangeHandler} value={formData.number} type="number" name='number' placeholder='Mobile No' className='ring-1 ring-sky-900/15 p-1 pl-3 rounded-sm bg-white outline-none ' required/>
