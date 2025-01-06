@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import axios from 'axios'
 
 export const ShopContext = createContext()
-const ShopContextProvider = ({children}) => {
+const ShopContextProvider = (props) => {
     const currency = "$"
     const delivery_charges=10
     const backendUrl = import.meta.env.VITE_BACKEND_URL
@@ -137,7 +137,7 @@ const ShopContextProvider = ({children}) => {
 
   return (
     <ShopContext.Provider value={value}>
-        {children}
+        {props.children}
     </ShopContext.Provider>
   )
 }
