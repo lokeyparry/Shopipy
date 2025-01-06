@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import{useParams} from 'react-router-dom'
 import{ShopContext} from '../context/shopContext'
 import{FaStar, FaStarHalfStroke, FaTruckFast} from 'react-icons/fa6'
@@ -25,7 +25,9 @@ const Product = () => {
   useEffect(() => {
     fetchProductData()
   }, [productId,products])
-  if (!product) return <div>Loading...</div>
+  if (!product)  {
+    return <div>Loading...</div>
+  }
 
 
   return (

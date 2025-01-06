@@ -1,10 +1,10 @@
-import React, { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 
 export const ShopContext = createContext()
-const ShopContextProvider = (props) => {
+const ShopContextProvider = ({children}) => {
     const currency = "$"
     const delivery_charges=10
     const backendUrl = import.meta.env.VITE_BACKEND_URL
@@ -137,7 +137,7 @@ const ShopContextProvider = (props) => {
 
   return (
     <ShopContext.Provider value={value}>
-        {props.children}
+        {children}
     </ShopContext.Provider>
   )
 }
