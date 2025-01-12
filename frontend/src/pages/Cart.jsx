@@ -12,7 +12,7 @@ const Cart = () => {
     const[quantities,setQuantities]=useState({})
 
     useEffect(()=>{
-        if(products.length){
+        if(products.length>0){
             let tempData=[]
             const initialQuantities={}
             for(const items in cartItems){
@@ -40,9 +40,11 @@ const Cart = () => {
     }
     const decrement = (id,size)=>{
         const key = `${id}-${size}`;
+        if(quantities[key]>1){
         const newValue = quantities[key]-1
         setQuantities(prev=>({...prev,[key]:newValue}))
         updateQuantity(id,size,newValue)
+        }
         
     }
 

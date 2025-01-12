@@ -44,9 +44,9 @@ const ShopContextProvider = (props) => {
         }
       }
     }
-    useEffect(()=>{
-      console.log(cartItems)
-    },[cartItems])
+    // useEffect(()=>{
+    //   setCartItems(cartItems)
+    // },[cartItems])
 
     // get cart count
     const getCartCount=()=>{
@@ -100,14 +100,17 @@ const ShopContextProvider = (props) => {
 
     const getProductsData = async()=>{
       try {
-        const response = await axios.get(backendUrl+'/api/product/list')
+        const response=await axios.get(backendUrl+'/api/product/list')
+        // console.log(response.data);
+        
         if(response.data.success){
           setProducts(response.data.products)
-        }else{
+        } else{
           toast.error(response.data.message)
         }
+        
       } catch (error) {
-        console.error(error)
+        console.log(error)
         toast.error(error.message)
       }
     }

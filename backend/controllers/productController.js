@@ -48,7 +48,7 @@ const addProduct = async(req, res) => {
     }
 }
 
-const removeProduct = async(req,res) => {
+const removeProduct = async(req, res) => {
     try {
         await productModel.findByIdAndDelete(req.body.id)
         res.json({ success: true, message: "Product Removed" })
@@ -59,15 +59,15 @@ const removeProduct = async(req,res) => {
     }
 }
 
-const singleProduct = async(req,res) => {
+const singleProduct = async(req, res) => {
     try {
-        const {productId}=req.body
+        const { productId } = req.body
         const product = await productModel.findById(productId)
-        res.json({ success: true, product }) 
+        res.json({ success: true, product })
     } catch (error) {
         console.log(error);
         res.status(500).json({ success: false, message: "Error Occurred" })
-        
+
     }
 }
 

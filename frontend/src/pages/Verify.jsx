@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useContext } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import { useSearchParams } from 'react-router-dom'
@@ -18,7 +18,7 @@ const Verify = () => {
             if(!token){
                 return null
             }
-            const response=await axios.post(backendUrl+'/api/order/verifyStripe',{success:orderId},{headers:{token}})
+            const response=await axios.post(backendUrl+'/api/order/verifystripe',{success:orderId},{headers:{token}})
             if(response.data.success){
                 setCartItems([])
                 navigate('/orders')

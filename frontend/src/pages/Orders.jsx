@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import Title from '../components/Title'
 import Footer from '../components/Footer'
@@ -6,7 +6,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 const Orders = () => {
-    const {backendUrl,token,products,currency}=useContext(ShopContext)
+    const {backendUrl,token,currency}=useContext(ShopContext)
     const [orderData,setOrderData]=useState([])
     // temprary dtaa 
     const loadOrderData= async()=>{
@@ -36,7 +36,7 @@ const Orders = () => {
     }
     useEffect(()=>{
         loadOrderData()
-    },[token])
+    },[])
   return (
     <div>
         <div className="bg-primary mb-16">

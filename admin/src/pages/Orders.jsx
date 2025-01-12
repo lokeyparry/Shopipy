@@ -1,7 +1,6 @@
-import React from 'react'
+
 import { useState } from 'react'
 import axios from 'axios'
-import { useContext } from 'react'
 import { useEffect } from 'react'
 import { backend_url, currency } from '../App'
 import {toast} from 'react-toastify'
@@ -61,7 +60,7 @@ const Orders = ({token}) => {
                       </p>
                     }else{
                       return <p key={index}>
-                        {item.name} x {item.quantity} <span>{item.size}</span>,
+                        {item.name} x {item.quantity} <span>{item.size}</span> ,
                       </p>
                     }
                   })}
@@ -75,13 +74,13 @@ const Orders = ({token}) => {
               <p>{order.address.phone}</p>
             </div>
             <div className="">
-            <p className="text-sm">Total: {order.item.length}</p>
+            <p className="text-sm">Total: {order.items.length}</p>
             <p className="mt-3">Method: {order.paymentMethod}</p>
             <p className="">Payment:{order.payment?"Done":"Pending"}</p>
             <p className="">Date: {new Date(order.date).toLocaleDateString()}</p>
           </div>
           <p className="text-sm font-semibold">{currency}{order.amount}</p>
-          <select onChange={(e)=>statusHandler(e.target,order._id)} value={order.status} className='text-sx font-semibold p-1 ring-1 ring-slate-900/5 rounded max-w-36 bg-primary'>
+          <select onChange={(e)=>statusHandler(e,order._id)} value={order.status} className='text-sx font-semibold p-1 ring-1 ring-slate-900/5 rounded max-w-36 bg-primary'>
             <option value="Order Placed">Order Placed</option>
             <option value="Packing">Packing</option>
             <option value="Shipped">Shipped</option>
