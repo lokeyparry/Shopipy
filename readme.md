@@ -1,0 +1,9 @@
+MONGO_URI='mongodb+srv://lokeyparry:lokey123@cluster0.lls3w.mongodb.net/shopipy?retryWrites=true&w=majority&appName=Cluster0'
+CLDN_API_KEY="274725391747622"
+CLDN_API_SECRET="tbyrpsDGfIRkI9gd6FBgHh50dQk"
+CLDN_NAME="parvej-ansari"
+JWT_SECRET="dummysecret"
+ADMIN_EMAIL="admin@shopipy.com"
+ADMIN_PASS="admin123"
+api_key="pk_test_51QdqugE6ZJWYQsQbX9U80FT5IpcKqScNrAafpnJU8MdriqatACs8Td7sEFpLVKLC7FFd2qrbtr5kk7qmakpbvLaO00bNh4RdPO"
+STRIPE_SECRET_KEY="sk_test_51QdqugE6ZJWYQsQbg3gJINE6oKeX5EBCgvzkrGXWbK8Exv9okpabVtBgaNP3hzAXRWGyO53Y4wiu9fUpR7uxYTIU008xlRsy19"
